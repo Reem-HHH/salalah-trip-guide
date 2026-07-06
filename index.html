@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A 10-day family trip guide to Salalah, Oman during Khareef season (19–28 July 2026). Daily itinerary, dining picks, logistics, and maps.">
     <title data-translate-key="page_title">Salalah Family Trip Guide 2026</title>
+    
+    <!-- Favicon: Using an emoji as a lightweight, self-contained icon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌴</text></svg>">
     
     <!-- Google Fonts: Nunito (English) and Cairo (Arabic) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://upload.wikimedia.org">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS for robust, responsive styling -->
@@ -40,10 +45,6 @@
     </script>
 
     <style>
-        body {
-            background-color: #f8fafc;
-        }
-
         /* Custom Map Pin Button Hover Effects */
         .map-pin {
             transition: all 0.2s ease-in-out;
@@ -67,9 +68,35 @@
             transform: scale(1.05);
         }
 
-        /* Use Cairo font for Arabic text */
+        /* Arabic typography */
         html[dir="rtl"] body {
             font-family: 'Cairo', sans-serif;
+        }
+
+        html[dir="rtl"] [data-translate-key="hero_badge"] {
+            text-transform: none;
+            letter-spacing: normal;
+        }
+
+        html[dir="rtl"] main,
+        html[dir="rtl"] section,
+        html[dir="rtl"] nav,
+        html[dir="rtl"] header {
+            direction: rtl;
+        }
+
+        html[dir="rtl"] #dining table {
+            direction: rtl;
+        }
+
+        html[dir="rtl"] #dining th,
+        html[dir="rtl"] #dining td {
+            text-align: start;
+        }
+
+        html[dir="rtl"] .flex.gap-4,
+        html[dir="rtl"] .flex.gap-3 {
+            direction: rtl;
         }
 
         /* Glassmorphism nav */
@@ -79,14 +106,81 @@
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.3);
         }
+
+        /* Responsive Table for Dining Section on Mobile (md breakpoint: 768px) */
+        /* This clever trick transforms a traditional table into a list of cards on mobile. */
+        /* It hides the table header (thead) and uses CSS grid on each table cell (td) */
+        /* to stack the label (from a data-label attribute) and the cell content vertically. */
+        /* This avoids horizontal scrolling and makes the data much easier to read on small screens. */
+        @media (max-width: 767px) {
+            #dining .overflow-x-auto {
+                overflow-x: visible;
+            }
+            #dining table {
+                border: 0;
+            }
+            #dining thead {
+                display: none;
+            }
+            #dining tr {
+                display: block;
+                margin-bottom: 1.25rem;
+                border-radius: 0.75rem;
+                box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+                border: 1px solid #f1f5f9; /* slate-100 */
+                background: white;
+                overflow: hidden;
+            }
+            #dining td {
+                display: grid;
+                grid-template-columns: minmax(7rem, 42%) minmax(0, 1fr);
+                gap: 1rem;
+                align-items: start;
+                padding: 0.75rem 1rem;
+                text-align: start;
+                border-bottom: 1px solid #f8fafc; /* slate-50 */
+                white-space: normal;
+            }
+
+            #dining td:last-child { border-bottom: 0; }
+            #dining td::before {
+                content: attr(data-label);
+                font-weight: 700; /* bold */
+                color: #334155; /* slate-700 */
+                text-align: start;
+            }
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -100%;
+            inset-inline-start: 1rem;
+            z-index: 100;
+            padding: 0.5rem 1rem;
+            background: #16a34a;
+            color: white;
+            font-weight: 700;
+            border-radius: 0.5rem;
+            text-decoration: none;
+        }
+        .skip-link:focus {
+            top: 1rem;
+        }
+
+        img.img-broken {
+            background: #e2e8f0;
+            object-fit: cover;
+        }
     </style>
 </head>
-<body class="text-slate-800 antialiased selection:bg-khareef-100 selection:text-khareef-900">
+<body class="bg-sand-50 text-slate-800 antialiased selection:bg-khareef-100 selection:text-khareef-900">
+
+    <a href="#main-content" class="skip-link" data-translate-key="skip_link">Skip to main content</a>
 
     <!-- Hero Section -->
     <header class="relative bg-khareef-900 text-white overflow-hidden rounded-b-[40px] shadow-xl mb-8">
         <div class="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1621084556062-c2d810b48f65?auto=format&fit=crop&q=80&w=2000" alt="Salalah Landscape" class="w-full h-full object-cover opacity-30">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Salalah_Dhofar_Oman.jpg/2000px-Salalah_Dhofar_Oman.jpg" data-fallback-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2000' height='800' viewBox='0 0 2000 800'%3E%3Crect fill='%2314532d' width='2000' height='800'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='32' text-anchor='middle' dy='.3em'%3ESalalah Khareef%3C/text%3E%3C/svg%3E" alt="Lush green Salalah landscape during Khareef monsoon season" class="w-full h-full object-cover opacity-30" fetchpriority="high" decoding="async">
             <div class="absolute inset-0 bg-gradient-to-t from-khareef-900 via-khareef-900/60 to-transparent"></div>
         </div>
         
@@ -97,15 +191,15 @@
             
             <div class="flex flex-wrap justify-center gap-3">
                 <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl py-2 px-4 flex items-center gap-2">
-                    <span class="text-xl">📅</span>
+                    <span class="text-xl shrink-0">📅</span>
                     <span data-translate-key="hero_dates" class="font-bold">19-28 July</span>
                 </div>
-                <a href="https://www.google.com/maps/search/?api=1&query=Al+Salama+Suites+Salalah" target="_blank" class="map-pin bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl py-2 px-4 text-white hover:bg-white/20">
-                    <span class="text-xl">📍</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=Al+Salama+Suites+Salalah" target="_blank" rel="noopener noreferrer" class="map-pin bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl py-2 px-4 text-white hover:bg-white/20">
+                    <span class="text-xl shrink-0">📍</span>
                     <span data-translate-key="hero_hotel" class="font-bold">Al Salama Suites</span>
                 </a>
                 <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl py-2 px-4 flex items-center gap-2">
-                    <span class="text-xl">🌧️</span>
+                    <span class="text-xl shrink-0">🌧️</span>
                     <span data-translate-key="hero_weather" class="font-bold">Peak Khareef (20–27°C)</span>
                 </div>
             </div>
@@ -115,40 +209,40 @@
     <!-- Sticky Navigation -->
     <nav class="sticky top-0 z-50 glass-nav mb-12 shadow-sm">
         <div class="max-w-5xl mx-auto px-4 flex justify-between items-center">
-            <ul class="flex justify-start overflow-x-auto py-4 space-x-2 sm:space-x-8 rtl:space-x-reverse text-sm sm:text-base font-bold text-slate-600 whitespace-nowrap">
+            <ul class="flex justify-start overflow-x-auto py-4 gap-4 sm:gap-8 text-sm sm:text-base font-bold text-slate-600 whitespace-nowrap">
                 <li><a href="#logistics" class="hover:text-khareef-600 transition-colors px-3 py-2 rounded-lg hover:bg-khareef-50"><span data-translate-key="nav_logistics">🎒 Logistics</span></a></li>
                 <li><a href="#itinerary" class="hover:text-khareef-600 transition-colors px-3 py-2 rounded-lg hover:bg-khareef-50"><span data-translate-key="nav_plan">🗺️ Daily Plan</span></a></li>
                 <li><a href="#dining" class="hover:text-khareef-600 transition-colors px-3 py-2 rounded-lg hover:bg-khareef-50"><span data-translate-key="nav_dining">🍽️ Dining Matrix</span></a></li>
             </ul>
-            <button id="lang-switcher" class="font-bold text-slate-600 hover:text-khareef-600 transition-colors px-3 py-2 rounded-lg hover:bg-khareef-50 whitespace-nowrap text-sm sm:text-base">
+            <button id="lang-switcher" type="button" aria-label="Switch language" data-translate-aria="lang_switcher_aria" class="font-bold text-slate-600 hover:text-khareef-600 transition-colors px-3 py-2 rounded-lg hover:bg-khareef-50 whitespace-nowrap text-sm sm:text-base">
                 <span data-translate-key="lang_button">العربية</span>
             </button>
         </div>
     </nav>
 
-    <main class="max-w-5xl mx-auto px-4 sm:px-6 pb-20">
+    <main id="main-content" class="max-w-5xl mx-auto px-4 sm:px-6 pb-20 text-start">
         
         <section id="logistics" class="scroll-mt-24 mb-16">
-            <div class="flex items-center gap-3 mb-8 rtl:flex-row-reverse">
+            <div class="flex items-center gap-3 mb-8">
                 <h2 data-translate-key="essential_info_title" class="text-2xl sm:text-3xl font-black text-khareef-900">Essential Info</h2>
                 <div class="h-1 flex-grow bg-khareef-100 rounded-full"></div>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Currency -->
-                <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow text-left rtl:text-right">
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow text-start">
                     <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-2xl mb-4">💱</div>
                     <h3 data-translate-key="currency_title" class="font-bold text-xl mb-2 text-slate-800">Currency</h3>
                     <p data-translate-key="currency_desc" class="text-slate-600 leading-relaxed text-sm">1 OMR ≈ 9.5 AED. Keep small notes (100 baisa to 1 OMR) for roadside fruit stalls (Mashmoom) and wadi boats. Malls take cards.</p>
                 </div>
                 <!-- Transport -->
-                <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow text-left rtl:text-right">
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow text-start">
                     <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center text-2xl mb-4">🚙</div>
                     <h3 data-translate-key="transport_title" class="font-bold text-xl mb-2 text-slate-800">Transport</h3>
                     <p data-translate-key="transport_desc" class="text-slate-600 leading-relaxed text-sm">Renting an SUV is highly recommended. Mountain roads (like Jabal Samhan) get heavy fog. Drive slowly and keep headlights on.</p>
                 </div>
                 <!-- Packing -->
-                <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow text-left rtl:text-right">
+                <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow text-start">
                     <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center text-2xl mb-4">🧥</div>
                     <h3 data-translate-key="packing_title" class="font-bold text-xl mb-2 text-slate-800">Packing</h3>
                     <p data-translate-key="packing_desc" class="text-slate-600 leading-relaxed text-sm">Pack light rain jackets, umbrellas, slip-resistant shoes for muddy wadi trails, and strong mosquito repellent.</p>
@@ -157,7 +251,7 @@
         </section>
 
         <section id="itinerary" class="scroll-mt-24">
-            <div class="flex items-center gap-3 mb-10 rtl:flex-row-reverse">
+            <div class="flex items-center gap-3 mb-10">
                 <h2 data-translate-key="itinerary_title" class="text-2xl sm:text-3xl font-black text-khareef-900">Your Daily Adventure</h2>
                 <div class="h-1 flex-grow bg-khareef-100 rounded-full"></div>
             </div>
@@ -165,29 +259,22 @@
             <!-- Day 1 -->
             <div class="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-slate-100 mb-10 group hover:shadow-lg transition-shadow">
                 <div class="bg-sky-50 px-8 py-5 border-b border-sky-100 flex justify-between items-center flex-wrap gap-4">
-                    <h3 data-translate-key="day1_title" class="text-xl sm:text-2xl font-black text-sky-900">Day 1: 19 July – Arrival & City Vibe</h3>
+                    <h3 data-translate-key="day1_title" class="text-xl sm:text-2xl font-black text-sky-900 w-full">Day 1: 19 July – Late Arrival & Settle In</h3>
                 </div>
                 <div class="p-8">
                     <div class="space-y-5">
-                        <div class="flex gap-4 rtl:flex-row-reverse">
-                            <div class="text-2xl">🏨</div>
+                        <div class="flex gap-4 text-start">
+                            <div class="text-2xl shrink-0">✈️</div>
                             <div>
-                                <strong data-translate-key="day1_item1_title" class="block text-slate-800 text-lg">Settle In & Mosque Views</strong>
-                                <p data-translate-key="day1_item1_desc" class="text-slate-600">Check into Al Salama Suites. Walk to see the grand exterior architecture of the <a href="https://www.google.com/maps/search/?api=1&query=Sultan+Qaboos+Mosque+Salalah" target="_blank" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Sultan Qaboos Mosque</a>.</p>
+                                <strong data-translate-key="day1_item1_title" class="block text-slate-800 text-lg">Arrival & Check-in</strong>
+                                <p data-translate-key="day1_item1_desc" class="text-slate-600">Land at Salalah Airport (~8 PM), pick up your rental SUV, and check into <a href="https://www.google.com/maps/search/?api=1&query=Al+Salama+Suites+Salalah" target="_blank" rel="noopener noreferrer" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Al Salama Suites</a>.</p>
                             </div>
                         </div>
-                        <div class="flex gap-4 rtl:flex-row-reverse">
-                            <div class="text-2xl">🛝</div>
+                        <div class="flex gap-4 text-start">
+                            <div class="text-2xl shrink-0">🍛</div>
                             <div>
-                                <strong data-translate-key="day1_item2_title" class="block text-slate-800 text-lg">Kids Playtime</strong>
-                                <p data-translate-key="day1_item2_desc" class="text-slate-600">Let the kids stretch their legs at <a href="https://www.google.com/maps/search/?api=1&query=Salalah+Park" target="_blank" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Salalah Public Park</a>. Wide walkways and playgrounds are perfect for burning off post-flight energy.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-4 rtl:flex-row-reverse">
-                            <div class="text-2xl">🛍️</div>
-                            <div>
-                                <strong data-translate-key="day1_item3_title" class="block text-slate-800 text-lg">Evening Souq & Dinner</strong>
-                                <p data-translate-key="day1_item3_desc" class="text-slate-600">Walk through <a href="https://www.google.com/maps/search/?api=1&query=Al+Haffa+Souq+Salalah" target="_blank" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Al Haffa (Husn) Souq</a> for frankincense and Omani Halwa. Dinner at <a href="https://www.google.com/maps/search/?api=1&query=Al+Ghad+Restaurant+Salalah" target="_blank" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Al Ghad Restaurant</a> (~AED 28-57) for excellent Pakistani/Indian grills.</p>
+                                <strong data-translate-key="day1_item2_title" class="block text-slate-800 text-lg">Late Dinner</strong>
+                                <p data-translate-key="day1_item2_desc" class="text-slate-600">Grab a simple, delicious late dinner at <a href="https://www.google.com/maps/search/?api=1&query=Al+Ghad+Restaurant+Salalah" target="_blank" rel="noopener noreferrer" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Al Ghad Restaurant</a> (~AED 28-57) for excellent Pakistani/Indian grills to recharge after your flight.</p>
                             </div>
                         </div>
                     </div>
@@ -200,30 +287,30 @@
                     <h3 data-translate-key="day2_title" class="text-xl sm:text-2xl font-black text-emerald-900">Day 2: 20 July – Emerald Wadis & Boats</h3>
                 </div>
                 <div class="img-zoom-container relative h-64 sm:h-80">
-                    <img src="https://www.beautifulsalalahtours.com/wp-content/uploads/2017/01/Darbat-2-scaled.jpg" alt="Wadi Darbat" class="img-zoom w-full h-full object-cover">
-                    <div data-translate-key="day2_img_caption" class="absolute bottom-4 left-4 rtl:left-auto rtl:right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-lg text-sm font-bold shadow">📍 Wadi Darbat</div>
+                    <img src="https://www.beautifulsalalahtours.com/wp-content/uploads/2017/01/Darbat-2-scaled.jpg" data-fallback-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1400' height='600' viewBox='0 0 1400 600'%3E%3Crect fill='%23166534' width='1400' height='600'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='28' text-anchor='middle' dy='.3em'%3EWadi Darbat%3C/text%3E%3C/svg%3E" alt="Wadi Darbat waterfalls and lake during Khareef" class="img-zoom w-full h-full object-cover" loading="lazy" decoding="async">
+                    <div data-translate-key="day2_img_caption" class="absolute bottom-4 start-4 bg-white/90 backdrop-blur px-3 py-1 rounded-lg text-sm font-bold shadow">📍 Wadi Darbat</div>
                 </div>
                 <div class="p-8">
                     <div class="space-y-5">
-                        <div class="flex gap-4 rtl:flex-row-reverse">
-                            <div class="text-2xl">🌿</div>
+                        <div class="flex gap-4 text-start">
+                            <div class="text-2xl shrink-0">🌿</div>
                             <div>
                                 <strong data-translate-key="day2_item1_title" class="block text-slate-800 text-lg">Wadi Darbat</strong>
-                                <p data-translate-key="day2_item1_desc" class="text-slate-600">Drive east to <a href="https://www.google.com/maps/search/?api=1&query=Wadi+Darbat+Salalah" target="_blank" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Wadi Darbat</a>. The waterfalls flow actively during peak Khareef. Rent a pedal or small motorboat (~AED 28-48) on the turquoise lake. Spot wild camels grazing by the water!</p>
+                                <p data-translate-key="day2_item1_desc" class="text-slate-600">Drive east to <a href="https://www.google.com/maps/search/?api=1&query=Wadi+Darbat+Salalah" target="_blank" rel="noopener noreferrer" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Wadi Darbat</a>. The waterfalls flow actively during peak Khareef. Rent a pedal or small motorboat (~AED 28-48) on the turquoise lake. Spot wild camels grazing by the water!</p>
                             </div>
                         </div>
-                        <div class="flex gap-4 rtl:flex-row-reverse">
-                            <div class="text-2xl">🧺</div>
+                        <div class="flex gap-4 text-start">
+                            <div class="text-2xl shrink-0">🧺</div>
                             <div>
                                 <strong data-translate-key="day2_item2_title" class="block text-slate-800 text-lg">Springs & Castles</strong>
-                                <p data-translate-key="day2_item2_desc" class="text-slate-600">Bring a picnic mat to <a href="https://www.google.com/maps/search/?api=1&query=Ayn+Razat+Salalah" target="_blank" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Ayn Razat springs</a> for shaded rest. On the way back, stop by <a href="https://www.google.com/maps/search/?api=1&query=Taqah+Castle+Oman" target="_blank" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Taqah Castle</a> for history.</p>
+                                <p data-translate-key="day2_item2_desc" class="text-slate-600">Bring a picnic mat to <a href="https://www.google.com/maps/search/?api=1&query=Ayn+Razat+Salalah" target="_blank" rel="noopener noreferrer" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Ayn Razat springs</a> for shaded rest. On the way back, stop by <a href="https://www.google.com/maps/search/?api=1&query=Taqah+Castle+Oman" target="_blank" rel="noopener noreferrer" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Taqah Castle</a> for history.</p>
                             </div>
                         </div>
-                        <div class="flex gap-4 rtl:flex-row-reverse">
-                            <div class="text-2xl">🥥</div>
+                        <div class="flex gap-4 text-start">
+                            <div class="text-2xl shrink-0">🥥</div>
                             <div>
                                 <strong data-translate-key="day2_item3_title" class="block text-slate-800 text-lg">Authentic Dining</strong>
-                                <p data-translate-key="day2_item3_desc" class="text-slate-600">Dinner in private floor-seating rooms (perfect for kids!) at <a href="https://www.google.com/maps/search/?api=1&query=Bin+Ateeq+Salalah" target="_blank" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Bin Ateeq</a> (~AED 38-67). Try the local Omani Shuwa.</p>
+                                <p data-translate-key="day2_item3_desc" class="text-slate-600">Dinner in private floor-seating rooms (perfect for kids!) at <a href="https://www.google.com/maps/search/?api=1&query=Bin+Ateeq+Salalah" target="_blank" rel="noopener noreferrer" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Bin Ateeq</a> (~AED 38-67). Try the local Omani Shuwa.</p>
                             </div>
                         </div>
                     </div>
@@ -236,32 +323,39 @@
                     <h3 data-translate-key="day3_title" class="text-xl sm:text-2xl font-black text-indigo-900">Day 3: 21 July – Wild Coast & Blowholes</h3>
                 </div>
                 <div class="img-zoom-container relative h-64 sm:h-80">
-                    <img src="https://www.beautifulsalalah.com/wp-content/uploads/2025/05/Mughasail-Blowholes.jpg" alt="Al Mughsail Blowholes" class="img-zoom w-full h-full object-cover">
-                    <div data-translate-key="day3_img_caption" class="absolute bottom-4 left-4 rtl:left-auto rtl:right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-lg text-sm font-bold shadow">📍 Marneef Cave Blowholes</div>
+                    <img src="https://www.beautifulsalalah.com/wp-content/uploads/2020/05/Mughasail-Blowholes.jpg" data-fallback-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1400' height='600' viewBox='0 0 1400 600'%3E%3Crect fill='%23312e81' width='1400' height='600'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='28' text-anchor='middle' dy='.3em'%3EAl Mughsail Beach%3C/text%3E%3C/svg%3E" alt="Al Mughsail Beach blowholes and coastal cliffs" class="img-zoom w-full h-full object-cover" loading="lazy" decoding="async">
+                    <div data-translate-key="day3_img_caption" class="absolute bottom-4 start-4 bg-white/90 backdrop-blur px-3 py-1 rounded-lg text-sm font-bold shadow">📍 Marneef Cave Blowholes</div>
                 </div>
                 <div class="p-8">
                     <div class="space-y-5">
-                        <div class="flex gap-4 rtl:flex-row-reverse">
-                            <div class="text-2xl">🌊</div>
+                        <div class="flex gap-4 text-start">
+                            <div class="text-2xl shrink-0">🌊</div>
                             <div>
                                 <strong data-translate-key="day3_item1_title" class="block text-slate-800 text-lg">The Roaring Blowholes</strong>
-                                <p data-translate-key="day3_item1_desc" class="text-slate-600">Walk the decks at <a href="https://www.google.com/maps/search/?api=1&query=Marneef+Cave+Salalah" target="_blank" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Marneef Cave</a>. Due to rough Khareef seas, water bursts dramatically through the rock vents! (Hold kids' hands tightly).</p>
+                                <p data-translate-key="day3_item1_desc" class="text-slate-600">Walk the decks at <a href="https://www.google.com/maps/search/?api=1&query=Marneef+Cave+Salalah" target="_blank" rel="noopener noreferrer" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Marneef Cave</a>. Due to rough Khareef seas, water bursts dramatically through the rock vents! (Hold kids' hands tightly).</p>
                             </div>
                         </div>
-                        <div class="flex gap-4 rtl:flex-row-reverse">
-                            <div class="text-2xl">🏖️</div>
+                        <div class="flex gap-4 text-start">
+                            <div class="text-2xl shrink-0">🏖️</div>
                             <div>
                                 <strong data-translate-key="day3_item2_title" class="block text-slate-800 text-lg">Al Mughsail & Fazayah</strong>
-                                <p data-translate-key="day3_item2_desc" class="text-slate-600">Enjoy the massive white sands of <a href="https://www.google.com/maps/search/?api=1&query=Al+Mughsail+Beach+Salalah" target="_blank" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Al Mughsail Beach</a> (swimming is unsafe during Khareef due to currents). Optional drive to <a href="https://www.google.com/maps/search/?api=1&query=Fazayah+Beach+Salalah" target="_blank" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Fazayah Beach</a>.</p>
+                                <p data-translate-key="day3_item2_desc" class="text-slate-600">Enjoy the massive white sands of <a href="https://www.google.com/maps/search/?api=1&query=Al+Mughsail+Beach+Salalah" target="_blank" rel="noopener noreferrer" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Al Mughsail Beach</a> (swimming is unsafe during Khareef due to currents). Optional drive to <a href="https://www.google.com/maps/search/?api=1&query=Fazayah+Beach+Salalah" target="_blank" rel="noopener noreferrer" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Fazayah Beach</a>.</p>
                             </div>
                         </div>
-                        <div class="flex gap-4 rtl:flex-row-reverse">
-                            <div class="text-2xl">🍤</div>
+                        <div class="flex gap-4 text-start">
+                            <div class="text-2xl shrink-0">🍤</div>
                             <div>
                                 <strong data-translate-key="day3_item3_title" class="block text-slate-800 text-lg">Cliffside Lunch</strong>
-                                <p data-translate-key="day3_item3_desc" class="text-slate-600">Eat right near the cave at <a href="https://www.google.com/maps/search/?api=1&query=Marnief+Restaurant+Salalah" target="_blank" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Al Marnife Restaurant</a> (~AED 48-95). Excellent Arabic and seafood dishes with ocean views.</p>
+                                <p data-translate-key="day3_item3_desc" class="text-slate-600">Eat right near the cave at <a href="https://www.google.com/maps/search/?api=1&query=Marneef+Restaurant+Salalah" target="_blank" rel="noopener noreferrer" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Al Marneef Restaurant</a> (~AED 48-95). Excellent Arabic and seafood dishes with ocean views.</p>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <!-- Pro Tip -->
+                <div class="p-8 pt-0">
+                    <div class="bg-blue-50 border border-blue-200 text-blue-800 rounded-2xl p-5 flex gap-4 text-start">
+                        <div class="text-2xl pt-1 shrink-0">💡</div>
+                        <div><strong data-translate-key="day3_pro_tip_title" class="block">Pro-Tip: What About Snorkeling?</strong><p data-translate-key="day3_pro_tip_desc" class="text-sm">While Salalah has beautiful marine life, the Khareef season (July/Aug) brings strong currents and reduced visibility, making snorkeling unsafe and difficult, especially for families. A safer alternative is a <a href="https://www.getyourguide.com/salalah-l903/salalah-dolphin-watching-boat-tour-with-pick-up-t429188/" target="_blank" rel="noopener noreferrer" class="font-bold hover:underline">Dolphin Watching Tour</a> from the marina!</p></div>
                     </div>
                 </div>
             </div>
@@ -269,29 +363,29 @@
             <!-- Day 4 -->
             <div class="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-slate-100 mb-10 group hover:shadow-lg transition-shadow">
                 <div class="bg-amber-50 px-8 py-5 border-b border-amber-100">
-                    <h3 data-translate-key="day4_title" class="text-xl sm:text-2xl font-black text-amber-900">Day 4: 22 July – History & Cool Malls</h3>
+                    <h3 data-translate-key="day4_title" class="text-xl sm:text-2xl font-black text-amber-900">Day 4: 22 July – History, Malls & Fun Zones</h3>
                 </div>
                 <div class="p-8">
                     <div class="space-y-5">
-                        <div class="flex gap-4 rtl:flex-row-reverse">
-                            <div class="text-2xl">🏺</div>
+                        <div class="flex gap-4 text-start">
+                            <div class="text-2xl shrink-0">🏺</div>
                             <div>
                                 <strong data-translate-key="day4_item1_title" class="block text-slate-800 text-lg">Museum Morning</strong>
-                                <p data-translate-key="day4_item1_desc" class="text-slate-600">Escape the morning humidity at the <a href="https://www.google.com/maps/search/?api=1&query=Al+Baleed+Archaeological+Site+Salalah" target="_blank" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Al Baleed Archaeological Site & Museum</a> (~AED 19-28). Highly educational for families.</p>
+                                <p data-translate-key="day4_item1_desc" class="text-slate-600">Escape the morning humidity at the <a href="https://www.google.com/maps/search/?api=1&query=Al+Baleed+Archaeological+Site+Salalah" target="_blank" rel="noopener noreferrer" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Al Baleed Archaeological Site & Museum</a> (~AED 19-28). Highly educational for families.</p>
                             </div>
                         </div>
-                        <div class="flex gap-4 rtl:flex-row-reverse">
-                            <div class="text-2xl">🕹️</div>
+                        <div class="flex gap-4 text-start">
+                            <div class="text-2xl shrink-0">🕹️</div>
                             <div>
                                 <strong data-translate-key="day4_item2_title" class="block text-slate-800 text-lg">Mall Retreat & Playtime</strong>
-                                <p data-translate-key="day4_item2_desc" class="text-slate-600">Head to <a href="https://www.google.com/maps/search/?api=1&query=Salalah+Gardens+Mall" target="_blank" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Salalah Gardens Mall</a>. It has fantastic AC and a dedicated indoor arcade/play zone for the kids.</p>
+                                <p data-translate-key="day4_item2_desc" class="text-slate-600">Head to a mall for AC and fun. <a href="https://www.google.com/maps/search/?api=1&query=Salalah+Gardens+Mall" target="_blank" rel="noopener noreferrer" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Salalah Gardens Mall</a> has a 'Fun Station', while the newer <a href="https://www.google.com/maps/search/?api=1&query=Salalah+Grand+Mall" target="_blank" rel="noopener noreferrer" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Salalah Grand Mall</a> has a large 'Fun Zone'. Both are great for kids.</p>
                             </div>
                         </div>
-                        <div class="flex gap-4 rtl:flex-row-reverse">
-                            <div class="text-2xl">🍕</div>
+                        <div class="flex gap-4 text-start">
+                            <div class="text-2xl shrink-0">🍕</div>
                             <div>
                                 <strong data-translate-key="day4_item3_title" class="block text-slate-800 text-lg">Kid-Approved Food</strong>
-                                <p data-translate-key="day4_item3_desc" class="text-slate-600">Lunch at <a href="https://www.google.com/maps/search/?api=1&query=Makdas+Fried+Chicken+Salalah" target="_blank" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Makdas Fried Chicken & Pizza</a> (~AED 19-48). Parents can grab premium coffee at <a href="https://www.google.com/maps/search/?api=1&query=Coffee+Bean+Tea+Leaf+Salalah" target="_blank" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 The Coffee Bean & Tea Leaf</a> inside the mall.</p>
+                                <p data-translate-key="day4_item3_desc" class="text-slate-600">Lunch at <a href="https://www.google.com/maps/search/?api=1&query=Makdas+Fried+Chicken+Salalah" target="_blank" rel="noopener noreferrer" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Makdas Fried Chicken & Pizza</a> (~AED 19-48). Parents can grab premium coffee at <a href="https://www.google.com/maps/search/?api=1&query=Coffee+Bean+Tea+Leaf+Salalah" target="_blank" rel="noopener noreferrer" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 The Coffee Bean & Tea Leaf</a> inside the mall.</p>
                             </div>
                         </div>
                     </div>
@@ -305,35 +399,35 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2">
                     <div class="img-zoom-container relative h-48 md:h-full">
-                        <img src="https://www.beautifulsalalah.com/wp-content/uploads/2020/05/Ayn-Athum-Beautiful-Salalah.png" alt="Ayn Athum" class="img-zoom w-full h-full object-cover">
-                        <div data-translate-key="day5_img1_caption" class="absolute bottom-4 left-4 rtl:left-auto rtl:right-4 bg-white/90 backdrop-blur px-2 py-1 rounded-lg text-xs font-bold shadow">📍 Ayn Athum</div>
+                        <img src="https://www.beautifulsalalah.com/wp-content/uploads/2020/05/Ayn-Athum-Beautiful-Salalah.png" data-fallback-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600' viewBox='0 0 800 600'%3E%3Crect fill='%230f766e' width='800' height='600'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='24' text-anchor='middle' dy='.3em'%3EAyn Athum%3C/text%3E%3C/svg%3E" alt="Ayn Athum seasonal waterfall in the misty mountains" class="img-zoom w-full h-full object-cover" loading="lazy" decoding="async">
+                        <div data-translate-key="day5_img1_caption" class="absolute bottom-4 start-4 bg-white/90 backdrop-blur px-2 py-1 rounded-lg text-xs font-bold shadow">📍 Ayn Athum</div>
                     </div>
                     <div class="img-zoom-container relative h-48 md:h-full">
-                        <img src="https://www.beautifulsalalah.com/wp-content/uploads/2020/06/IMG-20250619-WA0134-scaled.jpg" alt="Jabal Samhan" class="img-zoom w-full h-full object-cover">
-                        <div data-translate-key="day5_img2_caption" class="absolute bottom-4 left-4 rtl:left-auto rtl:right-4 bg-white/90 backdrop-blur px-2 py-1 rounded-lg text-xs font-bold shadow">📍 Jabal Samhan</div>
+                        <img src="https://www.beautifulsalalah.com/wp-content/uploads/2020/06/IMG-20200619-WA0134-scaled.jpg" data-fallback-src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600' viewBox='0 0 800 600'%3E%3Crect fill='%230f766e' width='800' height='600'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='24' text-anchor='middle' dy='.3em'%3EJabal Samhan%3C/text%3E%3C/svg%3E" alt="Jabal Samhan viewpoint above the clouds" class="img-zoom w-full h-full object-cover" loading="lazy" decoding="async">
+                        <div data-translate-key="day5_img2_caption" class="absolute bottom-4 start-4 bg-white/90 backdrop-blur px-2 py-1 rounded-lg text-xs font-bold shadow">📍 Jabal Samhan</div>
                     </div>
                 </div>
                 <div class="p-8">
                     <div class="space-y-5">
-                        <div class="flex gap-4 rtl:flex-row-reverse">
-                            <div class="text-2xl">⛰️</div>
+                        <div class="flex gap-4 text-start">
+                            <div class="text-2xl shrink-0">⛰️</div>
                             <div>
                                 <strong data-translate-key="day5_item1_title" class="block text-slate-800 text-lg">Jabal Samhan & Ayn Athum</strong>
-                                <p data-translate-key="day5_item1_desc" class="text-slate-600">Drive up <a href="https://www.google.com/maps/search/?api=1&query=Jabal+Samhan+Viewpoint" target="_blank" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Jabal Samhan</a> to literally stand above the clouds (chilly!). Descend into the misty forest to view the seasonal <a href="https://www.google.com/maps/search/?api=1&query=Ayn+Athum+Salalah" target="_blank" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Ayn Athum Waterfall</a>.</p>
+                                <p data-translate-key="day5_item1_desc" class="text-slate-600">Drive up <a href="https://www.google.com/maps/search/?api=1&query=Jabal+Samhan+Viewpoint" target="_blank" rel="noopener noreferrer" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Jabal Samhan</a> to literally stand above the clouds (chilly!). Descend into the misty forest to view the seasonal <a href="https://www.google.com/maps/search/?api=1&query=Ayn+Athum+Salalah" target="_blank" rel="noopener noreferrer" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Ayn Athum Waterfall</a>.</p>
                             </div>
                         </div>
-                        <div class="flex gap-4 rtl:flex-row-reverse">
-                            <div class="text-2xl">🐪</div>
+                        <div class="flex gap-4 text-start">
+                            <div class="text-2xl shrink-0">🐪</div>
                             <div>
                                 <strong data-translate-key="day5_item2_title" class="block text-slate-800 text-lg">Nature Rides</strong>
                                 <p data-translate-key="day5_item2_desc" class="text-slate-600">Look for locals offering safe, guided horseback or camel rides for kids near the green wadi plains (~AED 48-95).</p>
                             </div>
                         </div>
-                        <div class="flex gap-4 rtl:flex-row-reverse">
-                            <div class="text-2xl">🍽️</div>
+                        <div class="flex gap-4 text-start">
+                            <div class="text-2xl shrink-0">🍽️</div>
                             <div>
                                 <strong data-translate-key="day5_item3_title" class="block text-slate-800 text-lg">Fancy Feast</strong>
-                                <p data-translate-key="day5_item3_desc" class="text-slate-600">Treat the family to a premium international dining experience at <a href="https://www.google.com/maps/search/?api=1&query=Sakalan+Restaurant+Anantara+Salalah" target="_blank" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Sakalan Buffet (Anantara)</a> (~AED 95-143+).</p>
+                                <p data-translate-key="day5_item3_desc" class="text-slate-600">Treat the family to a premium international dining experience at <a href="https://www.google.com/maps/search/?api=1&query=Sakalan+Restaurant+Anantara+Salalah" target="_blank" rel="noopener noreferrer" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Sakalan Buffet (Anantara)</a> (~AED 95-143+).</p>
                             </div>
                         </div>
                     </div>
@@ -343,20 +437,20 @@
             <!-- Days 6 & 7 grouped for flow -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
                 <div class="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-slate-100 p-8 hover:shadow-lg transition-shadow">
-                    <h3 data-translate-key="day6_title" class="text-xl font-black text-rose-600 mb-6 border-b pb-4">Day 6: Festival Lights</h3>
+                    <h3 data-translate-key="day6_title" class="text-xl font-black text-rose-600 mb-6 border-b pb-4">Day 6: 24 July – Festival Lights</h3>
                     <ul class="space-y-4">
-                        <li class="flex gap-3 rtl:flex-row-reverse"><span class="text-xl">⛱️</span> <span data-translate-key="day6_item1" class="text-slate-600">Relax at the hotel pool or <a href="https://www.google.com/maps/search/?api=1&query=Al+Haffa+Beach+Salalah" target="_blank" class="font-bold text-khareef-600 hover:underline">Haffa Beach</a>.</span></li>
-                        <li class="flex gap-3 rtl:flex-row-reverse"><span class="text-xl">🎪</span> <span data-translate-key="day6_item2" class="text-slate-600">Evening at the <a href="https://www.google.com/maps/search/?api=1&query=Ittin+Festival+Grounds+Salalah" target="_blank" class="font-bold text-khareef-600 hover:underline">Khareef Festival Grounds (Ittin)</a>. Rides, music, and fairground fun!</span></li>
-                        <li class="flex gap-3 rtl:flex-row-reverse"><span class="text-xl">🍝</span> <span data-translate-key="day6_item3" class="text-slate-600">Seaside dinner at <a href="https://www.google.com/maps/search/?api=1&query=Ocean+Blue+Beach+House+Salalah" target="_blank" class="font-bold text-khareef-600 hover:underline">Ocean Blue Beach House</a> (~AED 76-114). Lots of space for kids to run.</span></li>
+                        <li class="flex gap-3 text-start"><span class="text-xl shrink-0">⛱️</span> <span data-translate-key="day6_item1" class="text-slate-600">Relax at the hotel pool or <a href="https://www.google.com/maps/search/?api=1&query=Al+Haffa+Beach+Salalah" target="_blank" rel="noopener noreferrer" class="font-bold text-khareef-600 hover:underline">Haffa Beach</a>.</span></li>
+                        <li class="flex gap-3 text-start"><span class="text-xl shrink-0">🎪</span> <span data-translate-key="day6_item2" class="text-slate-600">Evening at the <a href="https://www.google.com/maps/search/?api=1&query=Ittin+Festival+Grounds+Salalah" target="_blank" rel="noopener noreferrer" class="font-bold text-khareef-600 hover:underline">Khareef Festival Grounds (Ittin)</a>. Rides, music, and fairground fun!</span></li>
+                        <li class="flex gap-3 text-start"><span class="text-xl shrink-0">🍝</span> <span data-translate-key="day6_item3" class="text-slate-600">Seaside dinner at <a href="https://www.google.com/maps/search/?api=1&query=Ocean+Blue+Beach+House+Salalah" target="_blank" rel="noopener noreferrer" class="font-bold text-khareef-600 hover:underline">Ocean Blue Beach House</a> (~AED 76-114). Lots of space for kids to run.</span></li>
                     </ul>
                 </div>
                 
                 <div class="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-slate-100 p-8 hover:shadow-lg transition-shadow">
-                    <h3 data-translate-key="day7_title" class="text-xl font-black text-amber-700 mb-6 border-b pb-4">Day 7: Frankincense Trail</h3>
+                    <h3 data-translate-key="day7_title" class="text-xl font-black text-amber-700 mb-6 border-b pb-4">Day 7: 25 July – Frankincense Trail</h3>
                     <ul class="space-y-4">
-                        <li class="flex gap-3 rtl:flex-row-reverse"><span class="text-xl">🌳</span> <span data-translate-key="day7_item1" class="text-slate-600">Drive to <a href="https://www.google.com/maps/search/?api=1&query=Wadi+Dawkah+Frankincense+Park" target="_blank" class="font-bold text-khareef-600 hover:underline">Wadi Dawkah</a> (UNESCO site) to see real, wild frankincense trees growing.</span></li>
-                        <li class="flex gap-3 rtl:flex-row-reverse"><span class="text-xl">📸</span> <span data-translate-key="day7_item2" class="text-slate-600">Scenic photo stops along the rocky western highway.</span></li>
-                        <li class="flex gap-3 rtl:flex-row-reverse"><span class="text-xl">🍛</span> <span data-translate-key="day7_item3" class="text-slate-600">Hearty, cheap Pakistani/Arabic meal at <a href="https://www.google.com/maps/search/?api=1&query=Al+Qadri+Restaurant+Salalah" target="_blank" class="font-bold text-khareef-600 hover:underline">Al Qadri Restaurant</a> (~AED 28-57).</span></li>
+                        <li class="flex gap-3 text-start"><span class="text-xl shrink-0">🌳</span> <span data-translate-key="day7_item1" class="text-slate-600">Drive to <a href="https://www.google.com/maps/search/?api=1&query=Wadi+Dawkah+Frankincense+Park" target="_blank" rel="noopener noreferrer" class="font-bold text-khareef-600 hover:underline">Wadi Dawkah</a> (UNESCO site) to see real, wild frankincense trees growing.</span></li>
+                        <li class="flex gap-3 text-start"><span class="text-xl shrink-0">📸</span> <span data-translate-key="day7_item2" class="text-slate-600">Scenic photo stops along the rocky western highway.</span></li>
+                        <li class="flex gap-3 text-start"><span class="text-xl shrink-0">🍛</span> <span data-translate-key="day7_item3" class="text-slate-600">Hearty, cheap Pakistani/Arabic meal at <a href="https://www.google.com/maps/search/?api=1&query=Al+Qadri+Restaurant+Salalah" target="_blank" rel="noopener noreferrer" class="font-bold text-khareef-600 hover:underline">Al Qadri Restaurant</a> (~AED 28-57).</span></li>
                     </ul>
                 </div>
             </div>
@@ -368,18 +462,21 @@
                 </div>
                 <div class="p-8">
                     <div class="space-y-6">
-                        <div class="border-b border-slate-100 pb-4">
+                        <div class="border-b border-slate-100 pb-4 text-start">
                             <strong data-translate-key="day8_title" class="text-khareef-600 font-bold block mb-2">Day 8: Sacred Views & Souq (26 July)</strong>
-                            <p data-translate-key="day8_desc" class="text-slate-600">Drive up the misty Jabal Ittin to <a href="https://www.google.com/maps/search/?api=1&query=Prophet+Job+Tomb+Nabi+Ayoub+Salalah" target="_blank" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Prophet Job’s Tomb</a>. Final souq run for textiles. Dinner at <a href="https://www.google.com/maps/search/?api=1&query=Haffa+House+Salalah" target="_blank" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Haffa House</a> or <a href="https://www.google.com/maps/search/?api=1&query=Fanar+Hotel+Salalah" target="_blank" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Al Fanar</a> (~AED 38-76).</p>
+                            <p data-translate-key="day8_desc" class="text-slate-600">Drive up the misty Jabal Ittin to <a href="https://www.google.com/maps/search/?api=1&query=Prophet+Job+Tomb+Nabi+Ayoub+Salalah" target="_blank" rel="noopener noreferrer" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Prophet Job’s Tomb</a>. Final souq run for textiles. Dinner at <a href="https://www.google.com/maps/search/?api=1&query=Haffa+House+Salalah" target="_blank" rel="noopener noreferrer" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Haffa House</a> or <a href="https://www.google.com/maps/search/?api=1&query=Fanar+Hotel+Salalah" target="_blank" rel="noopener noreferrer" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Al Fanar</a> (~AED 38-76).</p>
                         </div>
-                        <div class="border-b border-slate-100 pb-4">
-                            <strong data-translate-key="day9_title" class="text-khareef-600 font-bold block mb-2">Day 9: Family Favorites (27 July)</strong>
-                            <p data-translate-key="day9_desc" class="text-slate-600">Keep this day free! Let the kids pick their favorite spot (another Wadi Darbat boat ride or mall arcade) and go do it one more time.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-start">
+                            <div class="border-b md:border-b-0 md:border-e md:pe-6 border-slate-100 pb-4">
+                                <strong data-translate-key="day9_title" class="text-khareef-600 font-bold block mb-2">Day 9: Splash & Play (27 July)</strong>
+                                <p data-translate-key="day9_desc" class="text-slate-600">Spend the day at <a href="https://www.google.com/maps/search/?api=1&query=Hawana+Aqua+Park+Salalah" target="_blank" rel="noopener noreferrer" class="map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded">📍 Hawana Aqua Park</a>. It's Oman's first water park, offering world-class slides, a wave pool, and fun play areas for all ages - a perfect way to cool off and have a blast.</p>
+                            </div>
+                            <div>
+                                <strong data-translate-key="day10_title" class="text-khareef-600 font-bold block mb-2">Day 10: Goodbye Salalah (28 July)</strong>
+                                <p data-translate-key="day10_desc" class="text-slate-600">Have a quick breakfast at the hotel before checking out. Head to the airport to return the car for your 10 AM flight. Fly home safely! ✈️</p>
+                            </div>
                         </div>
-                        <div>
-                            <strong data-translate-key="day10_title" class="text-khareef-600 font-bold block mb-2">Day 10: Goodbye Salalah (28 July)</strong>
-                            <p data-translate-key="day10_desc" class="text-slate-600">Enjoy a relaxing hotel breakfast. Check out of Al Salama Suites, grab duty-free treats, and fly home safely! ✈️</p>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -388,51 +485,51 @@
 
         <section id="dining" class="scroll-mt-24">
             <div class="flex items-center gap-3 mb-8">
-                <h2 class="text-2xl sm:text-3xl font-black text-khareef-900">Yummy Family Food Guide</h2>
+                <h2 data-translate-key="dining_title" class="text-2xl sm:text-3xl font-black text-khareef-900">Yummy Family Food Guide</h2>
                 <div class="h-1 flex-grow bg-khareef-100 rounded-full"></div>
             </div>
 
             <div class="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden mb-8">
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
+                    <table class="w-full text-start border-collapse">
                         <thead>
                             <tr class="bg-khareef-50 text-khareef-900">
-                                <th class="p-4 font-bold border-b border-khareef-100">Restaurant</th>
-                                <th class="p-4 font-bold border-b border-khareef-100 whitespace-nowrap">Cuisine</th>
-                                <th class="p-4 font-bold border-b border-khareef-100 whitespace-nowrap">Cost/Person</th>
-                                <th class="p-4 font-bold border-b border-khareef-100">Why Kids Love It</th>
+                                <th data-translate-key="dining_header_restaurant" class="p-4 font-bold border-b border-khareef-100">Restaurant</th>
+                                <th data-translate-key="dining_header_cuisine" class="p-4 font-bold border-b border-khareef-100 whitespace-nowrap">Cuisine</th>
+                                <th data-translate-key="dining_header_cost" class="p-4 font-bold border-b border-khareef-100 whitespace-nowrap">Cost/Person</th>
+                                <th data-translate-key="dining_header_kids" class="p-4 font-bold border-b border-khareef-100">Why Kids Love It</th>
                             </tr>
                         </thead>
                         <tbody class="text-slate-600 text-sm sm:text-base">
                             <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="p-4 border-b border-slate-100 font-bold text-slate-800">Makdas Fried Chicken</td>
-                                <td class="p-4 border-b border-slate-100 whitespace-nowrap">Crispy Chicken & Pizza</td>
-                                <td class="p-4 border-b border-slate-100 text-khareef-600 font-semibold whitespace-nowrap">AED 19-48</td>
-                                <td class="p-4 border-b border-slate-100">Familiar, comforting fast food for picky eaters!</td>
+                                <td data-translate-key="dining_r1_restaurant" data-label="Restaurant" data-label-en="Restaurant" data-label-ar="المطعم" class="p-4 border-b border-slate-100 font-bold text-slate-800">Makdas Fried Chicken</td>
+                                <td data-translate-key="dining_r1_cuisine" data-label="Cuisine" data-label-en="Cuisine" data-label-ar="المطبخ" class="p-4 border-b border-slate-100 whitespace-nowrap">Crispy Chicken & Pizza</td>
+                                <td data-translate-key="dining_r1_cost" data-label="Cost/Person" data-label-en="Cost/Person" data-label-ar="التكلفة للشخص" class="p-4 border-b border-slate-100 text-khareef-600 font-semibold whitespace-nowrap">AED 19-48</td>
+                                <td data-translate-key="dining_r1_kids" data-label="Why Kids Love It" data-label-en="Why Kids Love It" data-label-ar="لماذا يحبه الأطفال" class="p-4 border-b border-slate-100">Familiar, comforting fast food for picky eaters!</td>
                             </tr>
                             <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="p-4 border-b border-slate-100 font-bold text-slate-800">Bin Ateeq</td>
-                                <td class="p-4 border-b border-slate-100 whitespace-nowrap">Authentic Omani Local</td>
-                                <td class="p-4 border-b border-slate-100 text-khareef-600 font-semibold whitespace-nowrap">AED 38-67</td>
-                                <td class="p-4 border-b border-slate-100">Private carpeted floor rooms—kids can roll around freely!</td>
+                                <td data-translate-key="dining_r2_restaurant" data-label="Restaurant" data-label-en="Restaurant" data-label-ar="المطعم" class="p-4 border-b border-slate-100 font-bold text-slate-800">Bin Ateeq</td>
+                                <td data-translate-key="dining_r2_cuisine" data-label="Cuisine" data-label-en="Cuisine" data-label-ar="المطبخ" class="p-4 border-b border-slate-100 whitespace-nowrap">Authentic Omani Local</td>
+                                <td data-translate-key="dining_r2_cost" data-label="Cost/Person" data-label-en="Cost/Person" data-label-ar="التكلفة للشخص" class="p-4 border-b border-slate-100 text-khareef-600 font-semibold whitespace-nowrap">AED 38-67</td>
+                                <td data-translate-key="dining_r2_kids" data-label="Why Kids Love It" data-label-en="Why Kids Love It" data-label-ar="لماذا يحبه الأطفال" class="p-4 border-b border-slate-100">Private carpeted floor rooms—kids can roll around freely!</td>
                             </tr>
                             <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="p-4 border-b border-slate-100 font-bold text-slate-800">Al Ghad</td>
-                                <td class="p-4 border-b border-slate-100 whitespace-nowrap">Pakistani / Indian Grills</td>
-                                <td class="p-4 border-b border-slate-100 text-khareef-600 font-semibold whitespace-nowrap">AED 28-57</td>
-                                <td class="p-4 border-b border-slate-100">Super flavorful, hearty, and very budget-friendly.</td>
+                                <td data-translate-key="dining_r3_restaurant" data-label="Restaurant" data-label-en="Restaurant" data-label-ar="المطعم" class="p-4 border-b border-slate-100 font-bold text-slate-800">Al Ghad</td>
+                                <td data-translate-key="dining_r3_cuisine" data-label="Cuisine" data-label-en="Cuisine" data-label-ar="المطبخ" class="p-4 border-b border-slate-100 whitespace-nowrap">Pakistani / Indian Grills</td>
+                                <td data-translate-key="dining_r3_cost" data-label="Cost/Person" data-label-en="Cost/Person" data-label-ar="التكلفة للشخص" class="p-4 border-b border-slate-100 text-khareef-600 font-semibold whitespace-nowrap">AED 28-57</td>
+                                <td data-translate-key="dining_r3_kids" data-label="Why Kids Love It" data-label-en="Why Kids Love It" data-label-ar="لماذا يحبه الأطفال" class="p-4 border-b border-slate-100">Super flavorful, hearty, and very budget-friendly.</td>
                             </tr>
                             <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="p-4 border-b border-slate-100 font-bold text-slate-800">Ocean Blue Beach House</td>
-                                <td class="p-4 border-b border-slate-100 whitespace-nowrap">Mediterranean / Seafood</td>
-                                <td class="p-4 border-b border-slate-100 text-khareef-600 font-semibold whitespace-nowrap">AED 76-114</td>
-                                <td class="p-4 border-b border-slate-100">Open-air seaside setting with plenty of space to run.</td>
+                                <td data-translate-key="dining_r4_restaurant" data-label="Restaurant" data-label-en="Restaurant" data-label-ar="المطعم" class="p-4 border-b border-slate-100 font-bold text-slate-800">Ocean Blue Beach House</td>
+                                <td data-translate-key="dining_r4_cuisine" data-label="Cuisine" data-label-en="Cuisine" data-label-ar="المطبخ" class="p-4 border-b border-slate-100 whitespace-nowrap">Mediterranean / Seafood</td>
+                                <td data-translate-key="dining_r4_cost" data-label="Cost/Person" data-label-en="Cost/Person" data-label-ar="التكلفة للشخص" class="p-4 border-b border-slate-100 text-khareef-600 font-semibold whitespace-nowrap">AED 76-114</td>
+                                <td data-translate-key="dining_r4_kids" data-label="Why Kids Love It" data-label-en="Why Kids Love It" data-label-ar="لماذا يحبه الأطفال" class="p-4 border-b border-slate-100">Open-air seaside setting with plenty of space to run.</td>
                             </tr>
                             <tr class="hover:bg-slate-50 transition-colors">
-                                <td class="p-4 border-b border-slate-100 font-bold text-slate-800">The Coffee Bean</td>
-                                <td class="p-4 border-b border-slate-100 whitespace-nowrap">Premium Brews</td>
-                                <td class="p-4 border-b border-slate-100 text-khareef-600 font-semibold whitespace-nowrap">AED 19-38</td>
-                                <td class="p-4 border-b border-slate-100">AC comfort, sweet pastries, and a calm place to recharge.</td>
+                                <td data-translate-key="dining_r5_restaurant" data-label="Restaurant" data-label-en="Restaurant" data-label-ar="المطعم" class="p-4 border-b border-slate-100 font-bold text-slate-800">The Coffee Bean</td>
+                                <td data-translate-key="dining_r5_cuisine" data-label="Cuisine" data-label-en="Cuisine" data-label-ar="المطبخ" class="p-4 border-b border-slate-100 whitespace-nowrap">Premium Brews</td>
+                                <td data-translate-key="dining_r5_cost" data-label="Cost/Person" data-label-en="Cost/Person" data-label-ar="التكلفة للشخص" class="p-4 border-b border-slate-100 text-khareef-600 font-semibold whitespace-nowrap">AED 19-38</td>
+                                <td data-translate-key="dining_r5_kids" data-label="Why Kids Love It" data-label-en="Why Kids Love It" data-label-ar="لماذا يحبه الأطفال" class="p-4 border-b border-slate-100">AC comfort, sweet pastries, and a calm place to recharge.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -440,18 +537,238 @@
             </div>
 
             <!-- The Coconut Hack -->
-            <div class="bg-gradient-to-br from-amber-50 to-orange-50 border border-orange-100 p-8 rounded-3xl relative overflow-hidden shadow-sm">
-                <div class="absolute -right-4 -top-4 text-8xl opacity-10">🥥</div>
+            <div class="bg-gradient-to-br from-amber-50 to-orange-50 border border-orange-100 p-8 rounded-3xl relative overflow-hidden shadow-sm text-start">
+                <div class="absolute -end-4 -top-4 text-8xl opacity-10">🥥</div>
                 <h3 class="text-2xl font-black text-orange-600 mb-3 relative z-10 flex items-center gap-2">
-                    <span class="text-3xl">💡</span> The Best Family Travel Hack!
+                    <span class="text-3xl">💡</span> <span data-translate-key="hack_title">The Best Family Travel Hack!</span>
                 </h3>
-                <p class="text-slate-700 leading-relaxed relative z-10">
+                <p data-translate-key="hack_desc" class="text-slate-700 leading-relaxed relative z-10">
                     When the kids get restless in the back of the rental car, pull over at one of the bright fruit stands lining the tropical roads. For less than 1 OMR (~9 AED), the friendly vendors will expertly slice the top off a cold, fresh local coconut (<em>Mashmoom</em>) and pop a straw in it. It’s healthy, refreshing, super fun to drink from, and stops the crying instantly!
                 </p>
             </div>
         </section>
 
     </main>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" type="button" aria-label="Back to top" data-translate-aria="back_to_top_aria" class="hidden fixed bottom-8 end-8 bg-khareef-600 text-white w-12 h-12 rounded-full shadow-lg hover:bg-khareef-800 focus:outline-none focus:ring-2 focus:ring-khareef-500 focus:ring-opacity-50 transition-all z-50">
+        <span class="text-2xl">↑</span>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const LANG_STORAGE_KEY = 'salalah-guide-lang';
+
+            const uiLabels = {
+                en: {
+                    lang_switcher_aria: 'Switch language',
+                    back_to_top_aria: 'Back to top',
+                },
+                ar: {
+                    lang_switcher_aria: 'تبديل اللغة',
+                    back_to_top_aria: 'العودة إلى الأعلى',
+                },
+            };
+
+            const translations = {
+                ar: {
+                    page_title: "دليل رحلة صلالة العائلية 2026",
+                    skip_link: "انتقل إلى المحتوى الرئيسي",
+                    hero_badge: "مخطط العائلة",
+                    hero_title: "سحر خريف صلالة 🌴",
+                    hero_subtitle: "مغامرة أصيلة لمدة 10 أيام • 19 – 28 يوليو 2026",
+                    hero_dates: "19-28 يوليو",
+                    hero_hotel: "أجنحة السلامة",
+                    hero_weather: "ذروة الخريف (20-27 درجة مئوية)",
+                    nav_logistics: "🎒 الخدمات اللوجستية",
+                    nav_plan: "🗺️ الخطة اليومية",
+                    nav_dining: "🍽️ دليل الطعام",
+                    lang_button: "English",
+                    essential_info_title: "معلومات أساسية",
+                    currency_title: "العملة",
+                    currency_desc: "1 ريال عماني ≈ 9.5 درهم إماراتي. احتفظ بأوراق نقدية صغيرة (100 بيسة إلى 1 ريال) لأكشاك الفاكهة على جانب الطريق وقوارب الوادي. تقبل المراكز التجارية البطاقات.",
+                    transport_title: "المواصلات",
+                    transport_desc: "يوصى بشدة باستئجار سيارة دفع رباعي. الطرق الجبلية (مثل جبل سمحان) يغمرها ضباب كثيف. قُدْ ببطء وحافظ على إضاءة المصابيح الأمامية.",
+                    packing_title: "ماذا تحزم",
+                    packing_desc: "احزم سترات مطر خفيفة، ومظلات، وأحذية مقاومة للانزلاق لمسارات الوادي الموحلة، وطارد قوي للبعوض.",
+                    dining_title: "دليل الطعام اللذيذ للعائلة",
+                    dining_header_restaurant: "المطعم",
+                    dining_header_cuisine: "المطبخ",
+                    dining_header_cost: "التكلفة للشخص",
+                    dining_header_kids: "لماذا يحبه الأطفال",
+                    dining_r1_restaurant: "ماكداس فرايد تشيكن",
+                    dining_r1_cuisine: "دجاج مقرمش وبيتزا",
+                    dining_r1_cost: "19-48 درهم",
+                    dining_r1_kids: "طعام سريع مألوف ومريح للأطفال الصعب إرضاؤهم!",
+                    dining_r2_restaurant: "بن عتيق",
+                    dining_r2_cuisine: "أطباق عمانية أصيلة",
+                    dining_r2_cost: "38-67 درهم",
+                    dining_r2_kids: "غرف خاصة بسجاد أرضي—يمكن للأطفال التدحرج بحرية!",
+                    dining_r3_restaurant: "الغد",
+                    dining_r3_cuisine: "مشويات باكستانية / هندية",
+                    dining_r3_cost: "28-57 درهم",
+                    dining_r3_kids: "لذيذ ومشبع ومناسب جدًا للميزانية.",
+                    dining_r4_restaurant: "أوشن بلو بيتش هاوس",
+                    dining_r4_cuisine: "متوسطي / مأكولات بحرية",
+                    dining_r4_cost: "76-114 درهم",
+                    dining_r4_kids: "أجواء بحرية في الهواء الطلق مع مساحة واسعة للركض.",
+                    dining_r5_restaurant: "ذا كوفي بين",
+                    dining_r5_cuisine: "مشروبات فاخرة",
+                    dining_r5_cost: "19-38 درهم",
+                    dining_r5_kids: "راحة التكييف، معجنات حلوة، ومكان هادئ لاستعادة النشاط.",
+                    itinerary_title: "مغامرتك اليومية",
+                    day1_title: "اليوم الأول: 19 يوليو - الوصول المتأخر والاستقرار",
+                    day1_item1_title: "الوصول والتسجيل",
+                    day1_item1_desc: "الهبوط في مطار صلالة (~8 مساءً)، استلام سيارة الدفع الرباعي، وتسجيل الدخول في <a href='https://www.google.com/maps/search/?api=1&query=Al+Salama+Suites+Salalah' target='_blank' rel='noopener noreferrer' class='map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded'>📍 أجنحة السلامة</a>.",
+                    day1_item2_title: "عشاء متأخر",
+                    day1_item2_desc: "تناول عشاء بسيط ولذيذ في <a href='https://www.google.com/maps/search/?api=1&query=Al+Ghad+Restaurant+Salalah' target='_blank' rel='noopener noreferrer' class='map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded'>📍 مطعم الغد</a> (≈ 28-57 درهم) للمشويات الباكستانية/الهندية الممتازة لاستعادة النشاط بعد رحلتك.",
+                    day2_title: "اليوم الثاني: 20 يوليو - وديان خضراء وقوارب",
+                    day2_img_caption: "📍 وادي دربات",
+                    day2_item1_title: "وادي دربات",
+                    day2_item1_desc: "اتجه شرقًا إلى <a href='https://www.google.com/maps/search/?api=1&query=Wadi+Darbat+Salalah' target='_blank' rel='noopener noreferrer' class='map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded'>📍 وادي دربات</a>. تتدفق الشلالات بنشاط خلال ذروة الخريف. استأجر قارب دواسة أو قاربًا صغيرًا بمحرك (≈ 28-48 درهم) في البحيرة الفيروزية. شاهد الإبل البرية ترعى بجانب الماء!",
+                    day2_item2_title: "الينابيع والقلاع",
+                    day2_item2_desc: "أحضر بساط نزهة إلى <a href='https://www.google.com/maps/search/?api=1&query=Ayn+Razat+Salalah' target='_blank' rel='noopener noreferrer' class='map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded'>📍 عين رزات</a> للاستراحة في الظل. في طريق العودة، توقف عند <a href='https://www.google.com/maps/search/?api=1&query=Taqah+Castle+Oman' target='_blank' rel='noopener noreferrer' class='map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded'>📍 قلعة طاقة</a> للتاريخ.",
+                    day2_item3_title: "عشاء أصيل",
+                    day2_item3_desc: "عشاء في غرف خاصة ذات مقاعد أرضية (مثالية للأطفال!) في <a href='https://www.google.com/maps/search/?api=1&query=Bin+Ateeq+Salalah' target='_blank' rel='noopener noreferrer' class='map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded'>📍 بن عتيق</a> (≈ 38-67 درهم). جرب الشواء العماني المحلي.",
+                    day3_title: "اليوم الثالث: 21 يوليو - الساحل البري والنوافير الطبيعية",
+                    day3_img_caption: "📍 نوافير كهف المرنيف",
+                    day3_item1_title: "النوافير الصاخبة",
+                    day3_item1_desc: "امشِ على الأرصفة في <a href='https://www.google.com/maps/search/?api=1&query=Marneef+Cave+Salalah' target='_blank' rel='noopener noreferrer' class='map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded'>📍 كهف المرنيف</a>. بسبب بحار الخريف الهائجة، تنفجر المياه بشكل كبير عبر فتحات الصخور! (أمسك أيدي الأطفال بقوة).",
+                    day3_item2_title: "المغسيل والفزايا",
+                    day3_item2_desc: "استمتع بالرمال البيضاء الشاسعة لـ <a href='https://www.google.com/maps/search/?api=1&query=Al+Mughsail+Beach+Salalah' target='_blank' rel='noopener noreferrer' class='map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded'>📍 شاطئ المغسيل</a> (السباحة غير آمنة خلال الخريف بسبب التيارات). قيادة اختيارية إلى <a href='https://www.google.com/maps/search/?api=1&query=Fazayah+Beach+Salalah' target='_blank' rel='noopener noreferrer' class='map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded'>📍 شاطئ الفزايا</a>.",
+                    day3_item3_title: "غداء على الجرف",
+                    day3_item3_desc: "تناول الطعام بالقرب من الكهف في <a href='https://www.google.com/maps/search/?api=1&query=Marneef+Restaurant+Salalah' target='_blank' rel='noopener noreferrer' class='map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded'>📍 مطعم المرنيف</a> (≈ 48-95 درهم). أطباق عربية وبحرية ممتازة مع إطلالات على المحيط.",
+                    day3_pro_tip_title: "نصيحة احترافية: ماذا عن الغطس (السنوركلينج)؟",
+                    day3_pro_tip_desc: "بينما تتمتع صلالة بحياة بحرية جميلة، فإن موسم الخريف (يوليو/أغسطس) يجلب معه تيارات قوية ورؤية منخفضة، مما يجعل الغطس غير آمن وصعب، خاصة للعائلات. البديل الأكثر أمانًا هو <a href='https://www.getyourguide.com/salalah-l903/salalah-dolphin-watching-boat-tour-with-pick-up-t429188/' target='_blank' rel='noopener noreferrer' class='font-bold hover:underline'>جولة مشاهدة الدلافين</a> من المرسى!",
+                    day4_title: "اليوم الرابع: 22 يوليو - تاريخ، مولات ومناطق لعب",
+                    day4_item1_title: "صباح في المتحف",
+                    day4_item1_desc: "اهرب من رطوبة الصباح في <a href='https://www.google.com/maps/search/?api=1&query=Al+Baleed+Archaeological+Site+Salalah' target='_blank' rel='noopener noreferrer' class='map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded'>📍 موقع البليد الأثري ومتحف أرض اللبان</a> (≈ 19-28 درهم). تعليمي للغاية للعائلات.",
+                    day4_item2_title: "استراحة في المول ووقت لعب",
+                    day4_item2_desc: "توجه إلى أحد المولات للتكييف والمرح. <a href='https://www.google.com/maps/search/?api=1&query=Salalah+Gardens+Mall' target='_blank' rel='noopener noreferrer' class='map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded'>📍 صلالة جاردنز مول</a> به 'فن ستيشن'، بينما <a href='https://www.google.com/maps/search/?api=1&query=Salalah+Grand+Mall' target='_blank' rel='noopener noreferrer' class='map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded'>📍 صلالة جراند مول</a> الأحدث به 'فن زون' كبير. كلاهما رائع للأطفال.",
+                    day4_item3_title: "طعام يحبه الأطفال",
+                    day4_item3_desc: "غداء في <a href='https://www.google.com/maps/search/?api=1&query=Makdas+Fried+Chicken+Salalah' target='_blank' rel='noopener noreferrer' class='map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded'>📍 ماكداس فرايد تشيكن والبيتزا</a> (≈ 19-48 درهم). يمكن للوالدين الحصول على قهوة فاخرة في <a href='https://www.google.com/maps/search/?api=1&query=Coffee+Bean+Tea+Leaf+Salalah' target='_blank' rel='noopener noreferrer' class='map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded'>📍 ذا كوفي بين آند تي ليف</a> داخل المول.",
+                    day5_title: "اليوم الخامس: 23 يوليو - فوق السحاب",
+                    day5_img1_caption: "📍 عين أثوم",
+                    day5_img2_caption: "📍 جبل سمحان",
+                    day5_item1_title: "جبل سمحان وعين أثوم",
+                    day5_item1_desc: "اصعد إلى <a href='https://www.google.com/maps/search/?api=1&query=Jabal+Samhan+Viewpoint' target='_blank' rel='noopener noreferrer' class='map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded'>📍 جبل سمحان</a> لتقف حرفيًا فوق السحاب (الجو بارد!). انزل إلى الغابة الضبابية لمشاهدة <a href='https://www.google.com/maps/search/?api=1&query=Ayn+Athum+Salalah' target='_blank' rel='noopener noreferrer' class='map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded'>📍 شلال عين أثوم</a> الموسمي.",
+                    day5_item2_title: "جولات في الطبيعة",
+                    day5_item2_desc: "ابحث عن السكان المحليين الذين يقدمون جولات آمنة وموجهة على ظهور الخيل أو الجمال للأطفال بالقرب من سهول الوادي الخضراء (≈ 48-95 درهم).",
+                    day5_item3_title: "وليمة فاخرة",
+                    day5_item3_desc: "دلل العائلة بتجربة طعام عالمية فاخرة في <a href='https://www.google.com/maps/search/?api=1&query=Sakalan+Restaurant+Anantara+Salalah' target='_blank' rel='noopener noreferrer' class='map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded'>📍 بوفيه سكلان (أنانتارا)</a> (≈ 95-143+ درهم).",
+                    day6_title: "اليوم السادس: 24 يوليو - أضواء المهرجان",
+                    day6_item1: "استرخِ في مسبح الفندق أو <a href='https://www.google.com/maps/search/?api=1&query=Al+Haffa+Beach+Salalah' target='_blank' rel='noopener noreferrer' class='font-bold text-khareef-600 hover:underline'>شاطئ الحافة</a>.",
+                    day6_item2: "أمسية في <a href='https://www.google.com/maps/search/?api=1&query=Ittin+Festival+Grounds+Salalah' target='_blank' rel='noopener noreferrer' class='font-bold text-khareef-600 hover:underline'>أرض مهرجان الخريف (إيتين)</a>. ألعاب، موسيقى، ومتعة أرض المعارض!",
+                    day6_item3: "عشاء على شاطئ البحر في <a href='https://www.google.com/maps/search/?api=1&query=Ocean+Blue+Beach+House+Salalah' target='_blank' rel='noopener noreferrer' class='font-bold text-khareef-600 hover:underline'>أوشن بلو بيتش هاوس</a> (≈ 76-114 درهم). مساحة كبيرة للأطفال للركض.",
+                    day7_title: "اليوم السابع: 25 يوليو - درب اللبان",
+                    day7_item1: "توجه إلى <a href='https://www.google.com/maps/search/?api=1&query=Wadi+Dawkah+Frankincense+Park' target='_blank' rel='noopener noreferrer' class='font-bold text-khareef-600 hover:underline'>وادي دوكة</a> (موقع اليونسكو) لرؤية أشجار اللبان البرية الحقيقية وهي تنمو.",
+                    day7_item2: "توقفات لالتقاط صور خلابة على طول الطريق السريع الغربي الصخري.",
+                    day7_item3: "وجبة باكستانية/عربية شهية ورخيصة في <a href='https://www.google.com/maps/search/?api=1&query=Al+Qadri+Restaurant+Salalah' target='_blank' rel='noopener noreferrer' class='font-bold text-khareef-600 hover:underline'>مطعم القادري</a> (≈ 28-57 درهم).",
+                    day8_10_title: "الأيام 8-10: تراث ووداع",
+                    day8_title: "اليوم الثامن: مناظر مقدسة وسوق (26 يوليو)",
+                    day8_desc: "اصعد جبل إيتين الضبابي إلى <a href='https://www.google.com/maps/search/?api=1&query=Prophet+Job+Tomb+Nabi+Ayoub+Salalah' target='_blank' rel='noopener noreferrer' class='map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded'>📍 ضريح النبي أيوب</a>. جولة أخيرة في السوق للمنسوجات. عشاء في <a href='https://www.google.com/maps/search/?api=1&query=Haffa+House+Salalah' target='_blank' rel='noopener noreferrer' class='map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded'>📍 بيت الحافة</a> أو <a href='https://www.google.com/maps/search/?api=1&query=Fanar+Hotel+Salalah' target='_blank' rel='noopener noreferrer' class='map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded'>📍 الفنار</a> (≈ 38-76 درهم).",
+                    day9_title: "اليوم التاسع: رشقات مائية ومرح (27 يوليو)",
+                    day9_desc: "اقضِ اليوم في <a href='https://www.google.com/maps/search/?api=1&query=Hawana+Aqua+Park+Salalah' target='_blank' rel='noopener noreferrer' class='map-pin text-khareef-600 font-bold bg-khareef-50 px-2 rounded'>📍 حديقة هوانا المائية</a>. إنها أول حديقة مائية في عمان وتوفر منزلقات عالمية، وحوض أمواج، ومناطق لعب ممتعة للأطفال من جميع الأعمار - وهي طريقة مثالية للاسترخاء والمرح.",
+                    day10_title: "اليوم العاشر: وداعًا صلالة (28 يوليو)",
+                    day10_desc: "تناول وجبة فطور سريعة في الفندق قبل تسجيل الخروج. توجه إلى المطار لإعادة السيارة لرحلتك الساعة 10 صباحًا. سافر بأمان! ✈️",
+                    hack_title: "أفضل خدعة للسفر العائلي!",
+                    hack_desc: "عندما يبدأ الأطفال بالتململ في السيارة المستأجرة، توقف عند أحد أكشاك الفاكهة الزاهية على طول الطرق الاستوائية. بأقل من 1 ريال عماني (≈ 9 درهم)، سيقوم الباعة الودودون بقطع الجزء العلوي من جوز الهند المحلي الطازج والبارد (<em>المشموم</em>) ووضع قشة فيه. إنه صحي، منعش، وممتع جدًا للشرب، ويوقف البكاء على الفور!",
+                }
+                // Note: English translations are read from the original HTML, so they are not needed here.
+            };
+
+            const langSwitcher = document.getElementById('lang-switcher');
+            const htmlEl = document.documentElement;
+            
+            // On page load, store the original English texts from the HTML.
+            // This allows us to switch back to English without hardcoding it in the script.
+            const originalTexts = {};
+            document.querySelectorAll('[data-translate-key]').forEach(element => {
+                originalTexts[element.getAttribute('data-translate-key')] = element.innerHTML;
+            });
+
+            const originalAriaLabels = {};
+            document.querySelectorAll('[data-translate-aria]').forEach(element => {
+                originalAriaLabels[element.getAttribute('data-translate-aria')] = element.getAttribute('aria-label');
+            });
+
+            /**
+             * Sets the language of the page.
+             * @param {string} lang - The language to set ('en' or 'ar').
+             */
+            const setLanguage = (lang) => {
+                htmlEl.setAttribute('lang', lang);
+                htmlEl.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+                document.body.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+
+                document.querySelectorAll('[data-translate-key]').forEach(element => {
+                    const key = element.getAttribute('data-translate-key');
+                    const text = lang === 'ar' ? translations.ar[key] : originalTexts[key];
+                    if (text) {
+                        if (element.tagName === 'TITLE') {
+                            element.textContent = text;
+                        } else {
+                            element.innerHTML = text;
+                        }
+                    } else if (lang === 'ar') {
+                        console.warn(`Missing Arabic translation for key: ${key}`);
+                    }
+                });
+
+                document.querySelectorAll('[data-translate-aria]').forEach(element => {
+                    const key = element.getAttribute('data-translate-aria');
+                    const label = lang === 'ar' ? uiLabels.ar[key] : originalAriaLabels[key];
+                    if (label) {
+                        element.setAttribute('aria-label', label);
+                    }
+                });
+
+                document.querySelectorAll('#dining td[data-label-en]').forEach(cell => {
+                    cell.setAttribute('data-label', lang === 'ar' ? cell.dataset.labelAr : cell.dataset.labelEn);
+                });
+
+                localStorage.setItem(LANG_STORAGE_KEY, lang);
+            };
+
+            // --- 2. Image Fallback Logic ---
+            document.querySelectorAll('img[data-fallback-src]').forEach(image => {
+                image.addEventListener('error', () => {
+                    if (!image.dataset.fallbackTried) {
+                        image.dataset.fallbackTried = 'true';
+                        image.src = image.dataset.fallbackSrc;
+                    } else {
+                        image.classList.add('img-broken');
+                    }
+                });
+            });
+
+            langSwitcher.addEventListener('click', () => {
+                const currentLang = htmlEl.getAttribute('lang') || 'en';
+                setLanguage(currentLang === 'en' ? 'ar' : 'en');
+            });
+
+            const savedLang = localStorage.getItem(LANG_STORAGE_KEY);
+            if (savedLang === 'ar') {
+                setLanguage('ar');
+            }
+
+            // --- 3. "Back to Top" Button Logic ---
+            const backToTopButton = document.getElementById('back-to-top');
+
+            window.addEventListener('scroll', () => {
+                if (document.documentElement.scrollTop > 300) {
+                    backToTopButton.classList.remove('hidden');
+                } else {
+                    backToTopButton.classList.add('hidden');
+                }
+            }, { passive: true });
+
+            // Smoothly scroll the window back to the top when the button is clicked.
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
 
 </body>
 </html>
