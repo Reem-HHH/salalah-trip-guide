@@ -59,12 +59,66 @@
         /* Image hover zooms */
         .img-zoom-container {
             overflow: hidden;
+            cursor: zoom-in;
         }
         .img-zoom {
             transition: transform 0.5s ease;
         }
         .img-zoom-container:hover .img-zoom {
             transform: scale(1.05);
+        }
+
+        /* Image lightbox */
+        .image-lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 200;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(15, 23, 42, 0.92);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+        .image-lightbox.is-open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .image-lightbox img {
+            max-width: min(100%, 1200px);
+            max-height: calc(100vh - 8rem);
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 0.75rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        .image-lightbox-caption {
+            color: white;
+            font-weight: 700;
+            text-align: center;
+            max-width: 48rem;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 1rem;
+            inset-inline-end: 1rem;
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: 9999px;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 1.5rem;
+            line-height: 1;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            cursor: pointer;
+        }
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.25);
         }
 
         /* Arabic typography */
@@ -582,6 +636,13 @@
 
     </main>
 
+    <!-- Image Lightbox -->
+    <div id="image-lightbox" class="image-lightbox hidden" role="dialog" aria-modal="true" aria-label="Expanded image" data-translate-aria="lightbox_dialog_aria">
+        <button id="lightbox-close" type="button" class="lightbox-close" aria-label="Close image" data-translate-aria="lightbox_close_aria">×</button>
+        <img id="lightbox-image" src="" alt="">
+        <p id="lightbox-caption" class="image-lightbox-caption"></p>
+    </div>
+
     <!-- Back to Top Button -->
     <button id="back-to-top" type="button" aria-label="Back to top" data-translate-aria="back_to_top_aria" class="hidden fixed bottom-8 end-8 bg-khareef-600 text-white w-12 h-12 rounded-full shadow-lg hover:bg-khareef-800 focus:outline-none focus:ring-2 focus:ring-khareef-500 focus:ring-opacity-50 transition-all z-50">
         <span class="text-2xl">↑</span>
@@ -595,10 +656,16 @@
                 en: {
                     lang_switcher_aria: 'Switch language',
                     back_to_top_aria: 'Back to top',
+                    lightbox_dialog_aria: 'Expanded image',
+                    lightbox_close_aria: 'Close image',
+                    lightbox_open_aria: 'View larger image',
                 },
                 ar: {
                     lang_switcher_aria: 'تبديل اللغة',
                     back_to_top_aria: 'العودة إلى الأعلى',
+                    lightbox_dialog_aria: 'صورة مكبرة',
+                    lightbox_close_aria: 'إغلاق الصورة',
+                    lightbox_open_aria: 'عرض صورة أكبر',
                 },
             };
 
@@ -754,7 +821,7 @@
 
                 document.querySelectorAll('[data-translate-aria]').forEach(element => {
                     const key = element.getAttribute('data-translate-aria');
-                    const label = lang === 'ar' ? uiLabels.ar[key] : originalAriaLabels[key];
+                    const label = lang === 'ar' ? uiLabels.ar[key] : originalAriaLabels[key] || uiLabels.en[key];
                     if (label) {
                         element.setAttribute('aria-label', label);
                     }
@@ -762,6 +829,10 @@
 
                 document.querySelectorAll('#dining td[data-label-en]').forEach(cell => {
                     cell.setAttribute('data-label', lang === 'ar' ? cell.dataset.labelAr : cell.dataset.labelEn);
+                });
+
+                document.querySelectorAll('.img-zoom-container[role="button"]').forEach(container => {
+                    container.setAttribute('aria-label', uiLabels[lang].lightbox_open_aria);
                 });
 
                 localStorage.setItem(LANG_STORAGE_KEY, lang);
@@ -778,6 +849,83 @@
                     }
                 });
             });
+
+            // --- 2b. Image Lightbox ---
+            const lightbox = document.getElementById('image-lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            const lightboxClose = document.getElementById('lightbox-close');
+            let lightboxTrigger = null;
+
+            const updateLightboxAria = () => {
+                const lang = htmlEl.getAttribute('lang') || 'en';
+                [lightbox, lightboxClose].forEach(element => {
+                    const key = element.getAttribute('data-translate-aria');
+                    const label = lang === 'ar' ? uiLabels.ar[key] : uiLabels.en[key];
+                    if (label) element.setAttribute('aria-label', label);
+                });
+            };
+
+            const openLightbox = (container) => {
+                const image = container.querySelector('img');
+                const caption = container.querySelector('[data-translate-key$="_img_caption"]');
+                if (!image) return;
+
+                lightboxTrigger = container;
+                lightboxImage.src = image.currentSrc || image.src;
+                lightboxImage.alt = image.alt;
+
+                const captionText = caption?.textContent?.trim();
+                if (captionText) {
+                    lightboxCaption.textContent = captionText;
+                    lightboxCaption.hidden = false;
+                } else {
+                    lightboxCaption.textContent = '';
+                    lightboxCaption.hidden = true;
+                }
+
+                lightbox.classList.remove('hidden');
+                requestAnimationFrame(() => lightbox.classList.add('is-open'));
+                document.body.style.overflow = 'hidden';
+                lightboxClose.focus();
+            };
+
+            const closeLightbox = () => {
+                lightbox.classList.remove('is-open');
+                lightbox.classList.add('hidden');
+                lightboxImage.removeAttribute('src');
+                document.body.style.overflow = '';
+                if (lightboxTrigger) {
+                    lightboxTrigger.focus();
+                    lightboxTrigger = null;
+                }
+            };
+
+            document.querySelectorAll('.img-zoom-container').forEach(container => {
+                container.setAttribute('role', 'button');
+                container.setAttribute('tabindex', '0');
+                container.setAttribute('aria-label', uiLabels.en.lightbox_open_aria);
+
+                container.addEventListener('click', () => openLightbox(container));
+                container.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        openLightbox(container);
+                    }
+                });
+            });
+
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (event) => {
+                if (event.target === lightbox) closeLightbox();
+            });
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape' && lightbox.classList.contains('is-open')) {
+                    closeLightbox();
+                }
+            });
+
+            updateLightboxAria();
 
             langSwitcher.addEventListener('click', () => {
                 const currentLang = htmlEl.getAttribute('lang') || 'en';
